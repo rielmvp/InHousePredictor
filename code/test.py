@@ -30,6 +30,7 @@ one_df = one_df[my_cols].copy()
 s = (one_df.dtypes == 'object')
 object_cols = list(s[s].index)
 
+print(object_cols)
 filename1 = "../data/ordinal_encoder.pickle"
 
 # load model
@@ -45,4 +46,4 @@ loaded_model = pickle.load(open(filename, "rb"))
 preds = loaded_model.predict(one_df)
 
 # mape = mean_absolute_percentage_error(y, preds)
-print(preds)
+print(preds[0])
