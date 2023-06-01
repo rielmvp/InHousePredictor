@@ -1,4 +1,5 @@
 # InHousePredictor
+![image](https://github.com/rielmvp/InHousePredictor/assets/96563287/04320d83-c6ae-409d-a734-c7305c876431)
 
 # Manual
 We have used Django as platform for connecting html, css, javascript, and our AI Model.
