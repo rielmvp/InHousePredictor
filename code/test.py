@@ -16,10 +16,12 @@ one_df = pd.DataFrame({'Street Address':[street_address],
                         'Certificate':[certificate],
                         'Jakarta Division':[jakarta_division]})
 
-low_cardinality_cols = [cname for cname in one_df.columns if one_df[cname].nunique() < 10 and 
-                        one_df[cname].dtype == "object"]
-high_cardinality_cols = [cname for cname in one_df.columns if one_df[cname].nunique() >= 10 and 
-                        one_df[cname].dtype == "object"]
+# low_cardinality_cols = [cname for cname in one_df.columns if one_df[cname].nunique() < 10 and 
+#                         one_df[cname].dtype == "object"]
+# high_cardinality_cols = [cname for cname in one_df.columns if one_df[cname].nunique() >= 10 and 
+#                         one_df[cname].dtype == "object"]
+low_cardinality_cols = ['Jakarta Division']
+high_cardinality_cols = ['Street Address', 'Certificate']
 
 numerical_cols = [cname for cname in one_df.columns if one_df[cname].dtype in ['int64', 'float64']]
 
@@ -30,12 +32,23 @@ one_df = one_df[my_cols].copy()
 s = (one_df.dtypes == 'object')
 object_cols = list(s[s].index)
 
-print(object_cols)
 filename1 = "../data/ordinal_encoder.pickle"
+filename2 = "../data/one_hot_encoder.pickle"
 
 # load model
 ordinal_encoder = pickle.load(open(filename1, "rb"))
-one_df[object_cols] = ordinal_encoder.transform(one_df[object_cols])
+OH_encoder = pickle.load(open(filename2, "rb"))
+# Apply ordinal encoder to each column with categorical data
+mix_X_valid = one_df.copy()
+mix_X_valid[high_cardinality_cols] = ordinal_encoder.transform(one_df[high_cardinality_cols])
+
+# Apply one-hot encoder to each column with categorical data
+OH_cols_valid = pd.DataFrame(OH_encoder.transform(one_df[low_cardinality_cols]))
+
+OH_cols_valid.index = one_df.index
+OH_cols_valid.columns = OH_cols_valid.columns.astype('str')
+num_X_valid = mix_X_valid.drop(low_cardinality_cols, axis=1)
+one_df = pd.concat([num_X_valid, OH_cols_valid], axis=1)
 
 filename = "../data/random_forest.pickle"
 
