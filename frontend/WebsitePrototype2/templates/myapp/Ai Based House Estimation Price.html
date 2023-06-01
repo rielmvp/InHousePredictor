@@ -290,7 +290,7 @@
                 </div>
 
                 <div class="dropdown1" id="Bathrooms">
-                  <button onclick="myFunction1('myDropdown1', 'button1', 'Number of Bathrooms: ', 1, 11, 'Number of Bathrooms', 'myInput')" class="dropbtn" id="button1">Bathrooms</button>
+                  <button onclick="myFunction1('myDropdown1', 'button1', 'Number of Bathrooms: ', 1, 6, 'Number of Bathrooms', 'myInput')" class="dropbtn" id="button1">Bathrooms</button>
                   <div id="myDropdown1" class="dropdown-content">
                     
                   </div>
@@ -298,14 +298,14 @@
                 <br> </br>
 
                 <div class="dropdown2" id="Bedrooms">
-                  <button onclick="myFunction1('myDropdown2', 'button2', 'Number of Bedrooms: ', 1, 11, 'Number of Bedrooms', 'myInput')" class="dropbtn" id="button2">Bedrooms</button>
+                  <button onclick="myFunction1('myDropdown2', 'button2', 'Number of Bedrooms: ', 1, 6, 'Number of Bedrooms', 'myInput')" class="dropbtn" id="button2">Bedrooms</button>
                   <div id="myDropdown2" class="dropdown-content">
                     
                   </div>
                 </div>
 
                 <div class="dropdown3" id="Listing Area">
-                  <button onclick="myFunction1('myDropdown3', 'button3', 'Listing Area: ', 22, 366, 'Listing Area', 'myInput')" class="dropbtn" id="button3">Listing Area</button>
+                  <button onclick="myFunction1('myDropdown3', 'button3', 'Listing Area: ', 21, 351, 'Listing Area', 'myInput')" class="dropbtn" id="button3">Listing Area</button>
                   <div id="myDropdown3" class="dropdown-content">
                     
                   </div>
@@ -326,24 +326,46 @@
                     
                   </div>
                 </div>
+
+                
+                <div class="warning" id="warning">
+                  <p>⚠WARNING: Some of the values are outside the range of the data. Our model may not give a result that is as accurate.</p>
+                  
+                </div>
+
+                <div>
+                  <button class="btn btn-primary btn-lg" id="submitButton" onclick="goToPopUp()">Get Prediction</button>
+                </div>
                 
                 <br> </br>
         
-                <div class="result" id="result">
-                  
-                  
-                  <p>Your result will apear here</p>
-                  
-                  <br> </br>
-                  <button class="btn btn-primary btn-lg" id="submitButton" type="submit" onclick="showSellButton()">Get Prediction</button>
+                <!-- <div class="result" id="result">
+                  <p>Your result will appear here</p>
+                  <button class="resultButton" id="submitButton" type="submit" onclick="shareWhatssapp()">Share to Whatssapp</button>
+                  <button class="resultButton" id="sellProperty" type="submit" onclick="sellProperty()">Sell Property</button>
+                  <br>
+                </div> -->
+                
+                <div class="popup" id="popup">
+                  <div class="popup-content">
+                    <p class="result-text">Rp. ________,- </p>
+                    
+                    <button class="resultButton" id="sellProperty" type="submit" onclick="shareWhatsapp()">Share to WhatsApp</button>
+                    <button class="resultButton" id="sellProperty" type="submit" onclick="sellProperty()">Sell Property</button>
+                    
+                    <br>
+                    <button class="closeButton" onclick="hidePopup()">Close</button>
+                  </div>
+                </div>
+                
+                
+
                 </div>
 
                 <br> </br>
                 <br> </br>
 
-                <div class="sellProperty" id="sellProperty">
-                  <button class="btn btn-primary btn-lg" id="submitButton" type="submit" onclick="sellProperty()">Sell Property</button>
-                </div>
+      
               </div>
 
               <!-- <div class="d-none" id="submitSuccessMessage">
@@ -407,7 +429,18 @@
 
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
-  <!-- content omitted for brevity -->
+  <div class="container">
+    <h2 class="mb-5 mt-5">Contact Us</h2>
+    <div class="section-title">
+      <p class="lead">
+        We're glad you're interested in reaching out to us. Whether you have
+        a question about our products, want to give us feedback, or just
+        want to say hi, we're here to help. You can get in touch with us by
+        filling out this form.
+      </p>
+    </div>
+  </div>
+
   <div class="container">
     <div class="row mt-5">
       <div class="col-lg-4">
@@ -433,8 +466,9 @@
       </div>
 
       <div class="col-lg-8 mt-5 mt-lg-0">
-        <form id="contactForm" role="form" class="php-email-form slideanim slide">
-          <!-- Form fields -->
+        <form action="email_content.php" method="post">
+        <form method="post" role="form" class="php-email-form slideanim slide" id="contactForm">
+          <!-- Form fields omitted for brevity -->
           <div class="row">
             <div class="col-md-6 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -450,19 +484,7 @@
             <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
           </div>
           <div class="mt-3 mb-4">
-            <button id="submitBtn" type="button" class="btn btn-primary">Contact Us</button>
-
-            <!-- Display message -->
-            <?php if (isset($_SESSION['message'])): ?>
-              <div class="alert alert-<?php echo $_SESSION['message_type']; ?>">
-                  <?php echo $_SESSION['message']; ?>
-              </div>
-            <?php
-              // Unset the message so it's not displayed again
-              unset($_SESSION['message']);
-              unset($_SESSION['message_type']);
-            endif;
-            ?>
+           <button type="submit" class="btn btn-primary">Contact Us</button>
           </div>
         </form>
       </div>
@@ -471,7 +493,6 @@
 </section>
 <!-- End Contact Section -->
 
-<!-- End Contact Section -->
 
 
 
