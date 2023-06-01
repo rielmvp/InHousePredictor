@@ -6,14 +6,17 @@ In order to install Django, you first need Anaconda version lower or equal to 23
 It requires Python version 3.9.19, scikit-learn version 1.0.2, Pandas version 2.0.1. 
 1. To first install Django using Anaconda check this website from tutorialspoint: https://www.tutorialspoint.com/how-to-install-django-in-anaconda
 2. Once Django is installed you can either download the entire repository as a zip or in your terminal type 'git clone https://github.com/rielmvp/InHousePredictor.git '
-3. Once finished downloading in your terminal type 'python manage.py runserver' 
-4. An ip-address that looks something like 'https://127.0.0.1:8000/ will show.  Press 'Ctrl'+'left mouse click'
-5. You will be able to see the webpage show up
-6. Once the webpage shows press 'Get-Started'
-7. Select the appropriate values by clicking on each of the buttons and selecting 'Address, number of bathrooms, bedrooms, listing area, certificate, and Jakarta Division' 
-8. Press 'Get Prediction' then you will get an Ai-based prediction of your house's price.
-9. If you have any more questions, scroll down and check out the 'contact us' section below.
-10. Thanks!
+3. ![image](https://github.com/rielmvp/InHousePredictor/assets/96563287/9e4c5041-8383-41be-88f6-465a5b626e3e)
+![image](https://github.com/rielmvp/InHousePredictor/assets/96563287/531cbc78-6ec8-477e-a0e6-ee4bce0902c4)
+
+4. Once finished downloading in your terminal type 'python manage.py runserver' 
+5. An ip-address that looks something like 'https://127.0.0.1:8000/ will show.  Press 'Ctrl'+'left mouse click'
+6. You will be able to see the webpage show up
+7. Once the webpage shows press 'Get-Started'
+8. Select the appropriate values by clicking on each of the buttons and selecting 'Address, number of bathrooms, bedrooms, listing area, certificate, and Jakarta Division' 
+9. Press 'Get Prediction' then you will get an Ai-based prediction of your house's price.
+10. If you have any more questions, scroll down and check out the 'contact us' section below.
+11. Thanks!
 
 # AI Model Explanation
 
