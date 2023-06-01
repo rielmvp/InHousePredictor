@@ -25,5 +25,8 @@ Before removing outliers, the model's prediction results exceeded an MAPE (Mean 
 For features such as "street address," "certificate," and "Jakarta division," which are provided as string inputs, encoding was necessary. Two different encoders were used: ordinal encoding for features with high cardinality, such as street address and certificate, and one-hot encoding for the division feature with low cardinality.
 
 ## Models
-Four different models were applied: linear regression, logistic regression, XGBoost, and random forest. Among them, XGBoost and random forest performed well. To fine-tune the parameters of these models, randomized search was used. As a result, the performance was significantly improved, achieving an average MAPE of 0.18 over 500 runs of the model, which is nearly half compared to the previous result.
+Four different models were applied: linear regression, logistic regression, XGBoost, and random forest. Among them, XGBoost and random forest performed well. To fine-tune the parameters of these models, randomized search was used. As a result, the performance was significantly improved, achieving an average MAPE of 0.18 over 50 runs of the model, which is nearly half compared to the previous result.
+
+<img width="754" alt="image" src="https://github.com/rielmvp/InHousePredictor/assets/103105035/7330c59a-311c-45ff-a378-4d5f0440a416">
+
 

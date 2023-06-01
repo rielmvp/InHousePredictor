@@ -1,71 +1,98 @@
-{% load static %}  
+<?php session_start(); ?>
 
-<!-- saved from url=(0025)https://butternut.ai/demo -->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script src="{% static 'js/functions.js' %}"> </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Ai Based House Estimation Price</title>
-
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="https://butternut.ai/static/web1/assets/favicon.ico">
+    <!-- Bootstrap icons-->
+    <link href="../static/css/bootstrap-icons.css" rel="stylesheet" type="text/css">
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css" rel="stylesheet" type="text/css">
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-    
-
-
-    <style>.d-none {
-    display: none;
-}
-.invalid-feedback {
-    display: none;
-}
-.btn.disabled {
-    pointer-events: none;
-    opacity: 0.65;
-}</style>
-
-<script>
-  const predictionURL = "{% url 'prediction' %}";
-</script>
-
+    <link href="http://localhost/escritorio/WebsitePrototype2/static/css/styles.css" rel="stylesheet">
+    <!-- Calendly link widget begin -->
+    <link href="../static/css/widget.css" rel="stylesheet">
+    <style>
+        .d-none {
+            display: none;
+        }
+        .invalid-feedback {
+            display: none;
+        }
+        .btn.disabled {
+            pointer-events: none;
+            opacity: 0.65;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="http://localhost/escritorio/WebsitePrototype2/static/js/functions.js"></script>
+    <!-- <script src="D:/escritorio/WebsitePrototype2/static/js/functions.js"></script> -->
 </head>
 <body>
-    <!-- Masthead-->
-<header class="masthead" style="background: url('{% static 'img/background1.jpg' %}') no-repeat center center; background-size: cover;">
-      <div class="container position-relative">
-        <div class="row justify-content-center">
-          <div class="col-xl-6">
-            <div class="text-center text-white">
-              <!-- Page heading-->
-              <div class="container rounded modify-hover" element-id="headline">
-                <h1 id="headline" class="mb-4">AI House Listing</h1>
-              </div>
-              <div class="container rounded modify-hover" element-id="description">
-                <p id="description" class="lead mb-4">Get accurate house price predictions with our AI-based map generator. Streamline your real estate business with our cutting-edge technology.</p>
-              </div>
-              <div class="Language">
-                <button class="english" onclick="goEnglish()" onmouseover="showDialog('English (United States)')" onmouseout="hideDialog()"></button>
-                <button class="indonesian" onclick="goIndonesian()" onmouseover="showDialog('Indonesian')" onmouseout="hideDialog()"></button>
-                <div class="dialogBox" id="dialogBox">
-                  <span class="dialogText" id="dialogText"></span>
-                </div>
-              </div>
-            <div class="button-container">
-              <button class="btn btn-primary btn-lg" id="submitButton" onclick="goToPredict()">Get Started</button>
+    <a href="https://butternut.ai/demo"></a>
+    <!-- Calendly link widget end -->
+    <script>
+        let org_name = 'Ai Based House Estimation Price';
+        let keywords = 'generator, houses, prediction, real state, map';
+        let template_id = '1682235317_875';
+    </script>
+  
+    <!-- ********************************************************Language Button **********************************************-->
+    <!-- ********************************************************Language Button **********************************************-->
+    <!-- ********************************************************Language Button **********************************************-->
+
+      <!-- <div class="Language"></div>
+        <button class="english" onclick="goEnglish()"></button>
+        <button class="indonesian" onclick="goIndonesian()"></button>
+      </div> -->
+      
+      
+    <!-- ********************************************************Language Button **********************************************-->
+    <!-- ********************************************************Language Button **********************************************-->
+    <!-- ********************************************************Language Button **********************************************-->
+
+   <!-- Masthead-->
+<!-- Masthead-->
+<header class="masthead" style="background: url('http://localhost/escritorio/WebsitePrototype2/static/img/background1.jpg') no-repeat center center; background-size: cover;">
+  <div class="container position-relative">
+    <div class="row justify-content-center">
+      <div class="col-xl-6">
+        <div class="text-center text-white">
+          <!-- Page heading-->
+          <div class="container rounded modify-hover" element-id="headline">
+            <h1 id="headline" class="mb-4">AI House Listing</h1>
+          </div>
+          <div class="container rounded modify-hover" element-id="description">
+            <p id="description" class="lead mb-4">Get accurate house price predictions with our AI-based map generator. Streamline your real estate business with our cutting-edge technology.</p>
+          </div>
+          <div class="Language">
+            <button class="english" onclick="goEnglish()" onmouseover="showDialog('English (United States)')" onmouseout="hideDialog()"></button>
+            <button class="indonesian" onclick="goIndonesian()" onmouseover="showDialog('Indonesian')" onmouseout="hideDialog()"></button>
+            <div class="dialogBox" id="dialogBox">
+              <span class="dialogText" id="dialogText"></span>
             </div>
           </div>
-          <div class="menu-container">
-            <a href="#" class="menu-link" element-id="services">Our Services</a>
-            <a href="#" class="menu-link" element-id="questions">Questions</a>
-            <a href="#" class="menu-link" element-id="feedback">Feedback</a>
-            <a href="#" class="menu-link" element-id="contact">Contact Us</a>
-          </div>      
-        </div>
+        <div class="button-container">
+          <button class="btn btn-primary btn-lg" id="submitButton" onclick="goToPredict()">Get Started</button>
         </div>
       </div>
+      <div class="menu-container">
+        <a href="#" class="menu-link" element-id="services">Our Services</a>
+        <a href="#" class="menu-link" element-id="questions">Questions</a>
+        <a href="#" class="menu-link" element-id="feedback">Feedback</a>
+        <a href="#" class="menu-link" element-id="contact">Contact Us</a>
+      </div>      
+    </div>
+    </div>
+  </div>
 </header>
+
 
     <!-- Go Live Modal -->
     <div class="modal fade" id="goLiveModal" tabindex="-1" aria-labelledby="goLiveModalLabel" style="display: none" aria-hidden="true">
@@ -162,8 +189,7 @@
         <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
           <!-- <div class="features-icons-icon d-flex"><i class="bi-layers m-auto text-primary"></i></div> -->
           <div class="container rounded modify-hover" element-id="services_img_2">
-            <!--<img id="services_img_2" class="img-fluid rounded-circle mb-3" src="D:/escritorio/WebsitePrototype2/static/img/background.jpg" alt="...">-->
-            <img id="services_img_2" class="img-fluid rounded-circle mb-3" src="{% static 'img/background.jpg' %}" alt="..."> 
+            <img id="services_img_2" class="img-fluid rounded-circle mb-3" src="http://localhost/escritorio/WebsitePrototype2/static/img/background.jpg" alt="...">
           <button class="btn rounded-circle btn-sm modify-hover-button"><i class="bi bi-bootstrap-reboot text-white h5"></i></button></div>
           <div class="container rounded modify-hover" element-id="services_2_title">
             <h3 id="services_2_title">Real Estate Map</h3>
@@ -243,11 +269,12 @@
 </section>
 
 
+
     <!-- **************************************************** Drop Down Menus **************************************************-->
     <!-- **************************************************** Drop Down Menus **************************************************-->
     <!-- **************************************************** Drop Down Menus **************************************************-->
     
-    <section class="call-to-action text-white text-center" style="background: url('{% static 'img/house3.jpg' %}') no-repeat center center" id="signup">
+   <section class="call-to-action text-white text-center" style="background: url('http://localhost/escritorio/WebsitePrototype2/static/img/house3.jpg') no-repeat center center" id="signup">
       <div class="container position-relative">
         <div class="row justify-content-center">
           <div class="col-xl-6">
@@ -302,21 +329,26 @@
 
                 
                 <div class="warning" id="warning">
-                  <p>⚠WARNING: Selecting "Other" values are outside the range of the data. Our model may not give an accurate result.</p>
+                  <p>⚠WARNING: Some of the values are outside the range of the data. Our model may not give a result that is as accurate.</p>
                   
                 </div>
 
                 <div>
-                  <button class="btn btn-primary btn-lg" id="submitButton" type="submit" onclick="submitForm()">Get Prediction</button>
+                  <button class="btn btn-primary btn-lg" id="submitButton" onclick="goToPopUp()">Get Prediction</button>
                 </div>
                 
                 <br> </br>
-
-                <br> </br>
+        
+                <!-- <div class="result" id="result">
+                  <p>Your result will appear here</p>
+                  <button class="resultButton" id="submitButton" type="submit" onclick="shareWhatssapp()">Share to Whatssapp</button>
+                  <button class="resultButton" id="sellProperty" type="submit" onclick="sellProperty()">Sell Property</button>
+                  <br>
+                </div> -->
                 
                 <div class="popup" id="popup">
                   <div class="popup-content">
-                    <input class="result-text" id='result'> </p>
+                    <p class="result-text">Rp. ________,- </p>
                     
                     <button class="resultButton" id="sellProperty" type="submit" onclick="shareWhatsapp()">Share to WhatsApp</button>
                     <button class="resultButton" id="sellProperty" type="submit" onclick="sellProperty()">Sell Property</button>
@@ -335,6 +367,18 @@
 
       
               </div>
+
+              <!-- <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center mb-3">
+                  <div class="fw-bolder">Form submission successful!</div>
+                  <p>To activate this form, sign up at</p>
+                  <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                </div>
+              </div>
+              <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">
+                  Error sending message!
+                </div> -->
               </div>
             </form>
           </div>
@@ -342,6 +386,8 @@
       </div>
     </section>
 
+
+    
 
     <!--*********************************************** End Drop Menus *********************************************************-->
     <!--*********************************************** End Drop Menus *********************************************************-->
@@ -381,48 +427,76 @@
   </div>
 </section>
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2 class="mb-5 mt-5">Contact Us</h2>
-        <div class="section-title">
-          <!-- <h2>Contact</h2> -->
-          <p class="lead">
-            We're glad you're interested in reaching out to us. Whether you have
-            a question about our products, want to give us feedback, or just
-            want to say hi, we're here to help. You can get in touch with us by
-            filling out this form.
-          </p>
-        </div>
-      </div>
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="mb-5 mt-5">Contact Us</h2>
+    <div class="section-title">
+      <p class="lead">
+        We're glad you're interested in reaching out to us. Whether you have
+        a question about our products, want to give us feedback, or just
+        want to say hi, we're here to help. You can get in touch with us by
+        filling out this form.
+      </p>
+    </div>
+  </div>
 
-      <div class="container">
-        <div class="row mt-5">
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="ri-map-pin-line"></i>
-                <h4>Location:</h4>
-                <p>Handong Global University</p>
-              </div>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-lg-4">
+        <div class="info">
+          <div class="address">
+            <i class="ri-map-pin-line"></i>
+            <h4>Location:</h4>
+            <p>Handong Global University</p>
+          </div>
 
-              <div class="email">
-                <i class="ri-mail-line"></i>
-                <h4>Email:</h4>
-                <p>contactmygroup7@gmail.com</p>
-              </div>
+          <div class="email">
+            <i class="ri-mail-line"></i>
+            <h4>Email:</h4>
+            <p>contactmygroup7@gmail.com</p>
+          </div>
 
-              <div class="phone">
-                <i class="ri-phone-line"></i>
-                <h4>Call:</h4>
-                <p>(+82) 318-6259</p>
-              </div>
-            </div>
+          <div class="phone">
+            <i class="ri-phone-line"></i>
+            <h4>Call:</h4>
+            <p>(+82) 318-6259</p>
           </div>
         </div>
       </div>
-    </section>
-    <!-- End Contact Section -->
+
+      <div class="col-lg-8 mt-5 mt-lg-0">
+        <form action="email_content.php" method="post">
+        <form method="post" role="form" class="php-email-form slideanim slide" id="contactForm">
+          <!-- Form fields omitted for brevity -->
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+          </div>
+          <div class="mt-3 mb-4">
+           <button type="submit" class="btn btn-primary">Contact Us</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+
+
+
+
+
 
     
 
@@ -461,8 +535,31 @@
       </div>
     </footer>-->
     <!-- Bootstrap core JS-->
- 
+    <script src="./Ai Based House Estimation Price_files/bootstrap.bundle.min.js.download"></script>
+    <!-- Jquery -->
+    <!-- Core theme JS-->
+    <script src="./Ai Based House Estimation Price_files/scripts.js.download"></script>
+    <!-- Calendly-->
+    <script src="./Ai Based House Estimation Price_files/widget.js.download" type="text/javascript" async=""></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="./Ai Based House Estimation Price_files/sb-forms-latest.js.download"></script>
+    <script src="./Ai Based House Estimation Price_files/jquery.min.js.download"></script>
+    <script>
+      $(document).ready(function () {
+        $(window).scroll(function () {
+          $('.slideanim').each(function () {
+            var pos = $(this).offset().top;
+
+            var winTop = $(window).scrollTop();
+            if (pos < winTop + 600) {
+              $(this).addClass('slide');
+            }
+          });
+        });
+      });
+    </script>
   
-
-
 </body></html>
