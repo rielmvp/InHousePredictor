@@ -16,3 +16,8 @@ It requires Python version 3.9.19, scikit-learn version 1.0.2, Pandas version 2.
 10. Thanks!
 
 # AI Model Explanation
+
+#Data Scrapping
+We scapped 12,000 data from https://www.rumah.com which has 6 input features (listing area, number of beds, number of bath, street address, certificate, Jakarta division) and 1 target feature (Price).
+#Data Preprocessing
+
