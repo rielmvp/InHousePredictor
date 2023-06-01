@@ -1,8 +1,8 @@
 # InHousePredictor
-![image](https://github.com/rielmvp/InHousePredictor/assets/96563287/04320d83-c6ae-409d-a734-c7305c876431)
-![image](https://github.com/rielmvp/InHousePredictor/assets/96563287/0fd0b470-9062-4681-885e-e5fd9ac3f847)
-
-
+<div align="center">
+  <img src="Indonesian_Ver.png" width="500" alt="Image 1" />
+  <img src="English_Ver.png" width="500" alt="Image 2" />
+</div>
 # Manual
 We have used Django as platform for connecting html, css, javascript, and our AI Model.
 In order to install Django, you first need Anaconda version lower or equal to 23.1.0.
