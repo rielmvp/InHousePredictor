@@ -12,8 +12,8 @@ It requires Python version 3.9.19, scikit-learn version 1.0.2, Pandas version 2.
 1. To first install Django using Anaconda check this website from tutorialspoint: https://www.tutorialspoint.com/how-to-install-django-in-anaconda
 2. Once Django is installed you can either download the entire repository as a zip or in your terminal type 'git clone https://github.com/rielmvp/InHousePredictor.git '
 
-      ![image](https://github.com/rielmvp/InHousePredictor/assets/96563287/531cbc78-6ec8-477e-a0e6-ee4bce0902c4)
-
+    ![image](https://github.com/rielmvp/InHousePredictor/assets/96563287/8d0b549a-463e-4c91-bc92-dcfbb9702c51)
+    
 3. In command shell, type in "conda activate "Your_Virtual_Environment""
 4. cd InHousePredictor
 
