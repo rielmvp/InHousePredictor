@@ -1,1 +1,0 @@
-Check PHP version: Ensure that you are using a compatible PHP version for the PHPMailer library you are using. PHPMailer may have specific version requirements, so make sure your PHP version meets the minimum requirements.

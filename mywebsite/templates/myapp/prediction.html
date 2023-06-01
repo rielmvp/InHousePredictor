@@ -1,0 +1,67 @@
+{% load static %}  
+<html>
+<head>
+    <title>Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/prediction.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction</h1>
+        <form action="{% url 'prediction' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="street_address">street_address:</label>
+                <input type="text" id="street_address" name="street_address" placeholder="Enter street_address" required>
+            </div>
+            <div class="form-group">
+                <label for="certificate">Certificate:</label>
+                <select id="certificate" name="certificate" required>
+                    <option value="">Select certificate</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                    
+                    <!-- 다른 선택지 추가 -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="listing_area">Listing Area:</label>
+                <input type="number" id="listing_area" name="listing_area" placeholder="Enter listing area" required>
+            </div>
+            <div class="form-group">
+                <label for="bedroom_count">Bedroom Count:</label>
+                <input type="number" id="bedroom_count" name="bedroom_count" placeholder="Enter bedroom count" required>
+            </div>
+            <div class="form-group">
+                <label for="bathroom_count">Bathroom Count:</label>
+                <input type="number" id="bathroom_count" name="bathroom_count" placeholder="Enter bathroom count" required>
+            </div>
+            <div class="form-group">
+                <label for="Jakarta_Division">Jakarta Division:</label>
+                <select id="Division_info" name="Division_info" required>
+                    <option value="">Select Jakarta Division</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="North">North</option>
+                    <option value="South">South</option>
+                    <option value="Central">Central</option>
+
+                    <!-- 다른 선택지 추가 -->
+                </select>
+            </div>
+            <button type="submit">Get Prediction</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
