@@ -1,8 +1,8 @@
 # InHousePredictor
 
 <div align="center">
-  <img src="Indonesian_Ver.png" width="420" alt="Image 1" />
-  <img src="English_Ver.png" width="420" alt="Image 2" />
+  <img src="Indonesian_Ver.png" width="410" alt="Image 1" />
+  <img src="English_Ver.png" width="410" alt="Image 2" />
 </div>
 
 # Manual
