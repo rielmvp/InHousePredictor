@@ -1,7 +1,7 @@
 function goIndonesian(){
   document.body.classList.add('loadingCursor');
   setTimeout(function(){
-    window.location.href = '';
+    window.location.href = '/';
     document.body.classList.remove('loadingCursor');
   }, 1000);
   
