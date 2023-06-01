@@ -1,0 +1,12 @@
+<form action="{% url 'submit' %}" method="post">
+    {% comment %} //action에 views.py의 URL지정  {% endcomment %}
+    {% csrf_token %}
+    <div class="dropdown2">
+        <div id="myDropdown2" class="dropdown-content">
+            <input type="text" placeholder="Search.." id="myInput2" onkeyup="filterFunction2()" name ="info_1">
+            <button type="submit" class="myButtons" name="submit_button">Submit</button>
+        </div>
+    </div>
+</form>
+
+            
