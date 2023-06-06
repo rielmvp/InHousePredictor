@@ -6,6 +6,8 @@ import pickle
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+import requests
+
 
 def submit(request):
     if request.method == 'POST':
@@ -21,6 +23,7 @@ def home(request):
 def english(request):
     return render(request, 'myapp/english_Ver.html')
 
+
 @csrf_exempt
 def prediction_view(request):
     if request.method == 'POST':
@@ -31,24 +34,19 @@ def prediction_view(request):
         listing_area = int(data.get('listing_area'))
         jakarta_division = data.get('jakarta_division')
         certificate = data.get('certificate')
-        
-        # bedroom_count=int(bedroom_count)
-        # bathroom_count= int(bathroom_count)
-        # listing_area= int(listing_area)
-        
+
         one_df = pd.DataFrame({'street_address': [street_address],
-                           'bedroom_count': [bedroom_count],
-                           'bathroom_count': [bathroom_count],
-                           'listing_area': [listing_area],
-                           'certificate': [certificate],
-                           'jakarta_division': [jakarta_division]})
-        
+                               'bedroom_count': [bedroom_count],
+                               'bathroom_count': [bathroom_count],
+                               'listing_area': [listing_area],
+                               'certificate': [certificate],
+                               'jakarta_division': [jakarta_division]})
+
         low_cardinality_cols = ['jakarta_division']
         high_cardinality_cols = ['street_address', 'certificate']
 
-
-
-        numerical_cols = [cname for cname in one_df.columns if one_df[cname].dtype in ['int64', 'float64']]
+        numerical_cols = [
+            cname for cname in one_df.columns if one_df[cname].dtype in ['int64', 'float64']]
 
         my_cols = low_cardinality_cols + high_cardinality_cols + numerical_cols
         one_df = one_df[my_cols].copy()
@@ -65,10 +63,12 @@ def prediction_view(request):
         OH_encoder = pickle.load(open(filename2, "rb"))
         # Apply ordinal encoder to each column with categorical data
         mix_X_valid = one_df.copy()
-        mix_X_valid[high_cardinality_cols] = ordinal_encoder.transform(one_df[high_cardinality_cols])
+        mix_X_valid[high_cardinality_cols] = ordinal_encoder.transform(
+            one_df[high_cardinality_cols])
 
         # Apply one-hot encoder to each column with categorical data
-        OH_cols_valid = pd.DataFrame(OH_encoder.transform(one_df[low_cardinality_cols]))
+        OH_cols_valid = pd.DataFrame(
+            OH_encoder.transform(one_df[low_cardinality_cols]))
 
         OH_cols_valid.index = one_df.index
         OH_cols_valid.columns = OH_cols_valid.columns.astype('str')
@@ -83,7 +83,29 @@ def prediction_view(request):
         # you can use loaded model to compute predictions
         preds = loaded_model.predict(one_df)
         preds = int(preds[0])
+
+        # 1. fixer API로 환율 불러와서 통화 전환하는 방법 (현재 무료 API구독이라 알고보니 해당 기능은 지원안됨..)
+        # api_key = ''
+        # url = f"http://data.fixer.io/api/convert?access_key={api_key}&from=IDR&to=USD&amount={preds}"
+        # response = requests.get(url)
+        # data = response.json()
+
+        # if response.status_code == 200:
+        #     if 'result' in data:
+        #         converted_amount = data['result']
+        #         converted_amount = format(converted_amount, ",")
+        #         toUSdollar = "USD " + converted_amount
+        #     else:
+        #         toUSdollar = "There is no result"
+        # else:
+        #     toUSdollar = "Currency conversion failed."
+
+        # 2. 수동(?)으로 통화 전환 루피아화 -> USD
+        exchange_rate = 0.000071  # 적당한 환율 값 (루피아 1 달러 = 0.000071)
+        toUSdollar = round(preds * exchange_rate)  # 루피아를 달러로 변환
+        toUSdollar = format(toUSdollar, ",")
         preds = format(preds, ",")
+
         context = {
             'street_address': street_address,
             'certificate': certificate,
@@ -91,8 +113,8 @@ def prediction_view(request):
             'bedroom_count': bedroom_count,
             'bathroom_count': bathroom_count,
             'jakarta_division': jakarta_division,
-            'prediction': "Rp. "+ str(preds),
-
+            'prediction': 'Rp ' + preds,
+            'toUSdollar': '$' + toUSdollar,
         }
         return JsonResponse(context)
     return render(request, 'myapp/indonesian_Ver.html')

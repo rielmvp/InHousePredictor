@@ -316,7 +316,15 @@
                 
                 <div class="popup" id="popup">
                   <div class="popup-content">
-                    <input class="result-text" id='result'> </p>
+
+                    <div class="result-text">
+                      <label >[IDR] </label>
+                      <span id="result"></span>
+                    </div>
+                    <div class="usd" id="convertedAmount">
+                      <label >[USD] </label>
+                      <span id="usd"></span>
+                    </div>
                     
                     <button class="resultButton" id="sellProperty" type="submit" onclick="shareWhatsapp()">Share to WhatsApp</button>
                     <button class="resultButton" id="sellProperty" type="submit" onclick="sellProperty()">Sell Property</button>

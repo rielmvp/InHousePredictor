@@ -64,7 +64,12 @@
 }
 
 .result-text {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.usd {
+  margin-bottom: 30px;
   font-weight: bold;
 }
 

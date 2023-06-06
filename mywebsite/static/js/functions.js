@@ -101,7 +101,11 @@ function submitForm() {
     }
   }).then(data => {
     const prediction = data.prediction;
-    document.getElementById('result').value = prediction;
+    const convertedAmount = data.toUSdollar;
+    document.getElementById('result').innerText = prediction;
+    if (convertedAmount) {
+      document.getElementById('usd').innerText = convertedAmount;
+    }
   }).catch(error => {
     console.error(error);
   });
