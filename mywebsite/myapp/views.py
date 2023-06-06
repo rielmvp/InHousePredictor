@@ -101,7 +101,7 @@ def prediction_view(request):
         #     toUSdollar = "Currency conversion failed."
 
         # 2. 수동(?)으로 통화 전환 루피아화 -> USD
-        exchange_rate = 0.000071  # 적당한 환율 값 (루피아 1 달러 = 0.000071)
+        exchange_rate = 0.000067  # 적당한 환율 값 (루피아 1 달러 = 0.000067)
         toUSdollar = round(preds * exchange_rate)  # 루피아를 달러로 변환
         toUSdollar = format(toUSdollar, ",")
         preds = format(preds, ",")
