@@ -11,7 +11,7 @@ In order to install Django, you first need Anaconda version lower or equal to 23
 It requires Python version 3.9.19, scikit-learn version 1.0.2, Pandas version 2.0.1. 
 1. Firstly, install Django using Anaconda check this website from tutorialspoint: https://www.tutorialspoint.com/how-to-install-django-in-anaconda
 2. Once Django is installed you can either download the entire repository as a zip or in your terminal type 'git clone https://github.com/rielmvp/InHousePredictor.git '
-   * **Important step:**Unzip "random_forest.pickle.zip" and put it in "myapp"
+   * **Important step:**Unzip "random_forest.pickle.zip" (which is in the repository's 'data' folder, and put it in "myapp"
 
     ![image](https://github.com/rielmvp/InHousePredictor/assets/96563287/48216704-a5b9-4ec2-bf23-e56331276fda)
     
